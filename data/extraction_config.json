@@ -1,0 +1,86 @@
+{
+  "version": "chapter3-af-1.1",
+  "input": {
+    "fps": 25,
+    "fps_tolerance": 0.01,
+    "width": 160,
+    "height": 120
+  },
+  "segmentation": {
+    "model": "pphumanseg.onnx",
+    "sha256": "552d8a984054e59b5d773d24b9b12022b22046ceb2bbc4c9aaeaceb36a9ddf24",
+    "source": "https://github.com/opencv/opencv_zoo/tree/main/models/human_segmentation_pphumanseg",
+    "input_side": 192,
+    "threshold": 0.45,
+    "min_pixels": 30,
+    "min_height": 10,
+    "min_width": 3,
+    "min_component_pixels": 4,
+    "min_component_fraction": 0.015,
+    "component_margin_x": 0.4,
+    "component_margin_y": 0.45,
+    "reacquire_interval": 10,
+    "crop_min_halfwidth": 28,
+    "crop_width_factor": 0.85,
+    "crop_height_factor": 0.68,
+    "crop_top_fraction": 0.3,
+    "crop_bottom_fraction": 0.65,
+    "crop_top_min": 14,
+    "crop_bottom_min": 20,
+    "refine": {
+      "background_samples": 31,
+      "side": 0.52,
+      "top": 0.1,
+      "bottom": 0.48,
+      "strip": 9,
+      "spatial_delta": 17,
+      "temporal_delta": 13,
+      "seed_contrast_fraction": 0.52,
+      "foot_start": 0.88,
+      "foot_halfwidth": 0.19,
+      "max_distance": 0.43
+    }
+  },
+  "farneback": {
+    "pyr_scale": 0.5,
+    "levels": 3,
+    "winsize": 15,
+    "iterations": 3,
+    "poly_n": 5,
+    "poly_sigma": 1.2,
+    "flags": 0
+  },
+  "reference": {
+    "x_min": 0.3,
+    "x_max": 0.7,
+    "y_min": 0.25,
+    "y_max": 0.65,
+    "min_body_pixels": 6,
+    "min_background_pixels": 32,
+    "background_halo": 4,
+    "height_floor": 12
+  },
+  "epsilon": 1e-12,
+  "temporal": {
+    "lags": [
+      3,
+      5,
+      8,
+      12,
+      16,
+      24,
+      32,
+      48
+    ],
+    "min_run": 25,
+    "min_detrended_std": 0.0001
+  },
+  "difference": {
+    "threshold": 12,
+    "min_height": 16,
+    "min_width_heights": 1.5,
+    "extra_width_heights": 0.2,
+    "top_pad": 0.15,
+    "bottom_pad": 0.1
+  }
+}

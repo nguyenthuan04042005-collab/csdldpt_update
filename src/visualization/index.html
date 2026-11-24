@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121819">
+  <title>Kho video · So sánh tương đồng</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar" aria-label="Kho video">
+    <div class="identity">
+      <span class="mark" aria-hidden="true"><i></i></span>
+      <div><strong>Kho video</strong><span>Tra cứu theo nội dung</span></div>
+    </div>
+    <section class="library">
+      <div class="filter-heading"><h2>Chọn truy vấn</h2><span id="library-count">…</span></div>
+      <label for="filter-text">Tên tệp hoặc mã người</label>
+      <input type="search" id="filter-text" placeholder="Ví dụ: person01, d1" autocomplete="off">
+      <div class="selects">
+        <select id="filter-action" aria-label="Lọc theo hành động"><option value="">Mọi hành động</option></select>
+        <select id="filter-person" aria-label="Lọc theo người"><option value="">Mọi người</option></select>
+      </div>
+      <label class="check"><input type="checkbox" id="filter-complete"> Chỉ video đủ 324 chiều</label>
+      <button id="random" class="button random" type="button" disabled><span aria-hidden="true">⤨</span> Chọn ngẫu nhiên</button>
+    </section>
+    <div class="video-list" id="video-list" aria-label="Danh sách video"></div>
+    <footer class="sidebar-footer" id="dataset-summary">Đang tải dữ liệu KTH…</footer>
+  </aside>
+
+  <main class="main">
+    <header class="masthead">
+      <div>
+        <h1>So sánh video tương đồng</h1>
+        <p>Xem truy vấn, đối chiếu 5 video gần nhất và điểm từng nhóm A–F.</p>
+      </div>
+      <div class="actions">
+        <span id="rating-count">0 cặp đã đánh giá</span>
+        <a class="button" id="export-ratings" href="/api/ratings.csv" download>Xuất nhận xét</a>
+        <button class="button" id="show-labels" type="button" aria-pressed="false">Hiện nhãn thật</button>
+      </div>
+    </header>
+
+    <section class="settings" aria-labelledby="settings-title">
+      <div class="settings-header">
+        <h2 id="settings-title">Cấu hình xếp hạng</h2>
+        <label class="check"><input type="checkbox" id="include-d" checked> Dùng nhóm D hợp lệ</label>
+      </div>
+      <div class="metric-options" aria-label="Thước đo khoảng cách">
+        <button type="button" data-metric="manhattan" aria-pressed="true"><strong>Manhattan</strong><span>Chênh lệch tuyệt đối</span></button>
+        <button type="button" data-metric="sqeuclidean" aria-pressed="false"><strong>Euclid bình phương</strong><span>Nhấn mạnh chênh lệch lớn</span></button>
+        <button type="button" data-metric="huber" aria-pressed="false"><strong>Huber</strong><span>Ngưỡng 1 sau chuẩn hóa</span></button>
+        <button type="button" data-metric="cosine" aria-pressed="false"><strong>Cosine</strong><span>Hướng của vector</span></button>
+      </div>
+      <div class="settings-footer">
+        <p id="metric-note"></p>
+        <label class="check"><input type="checkbox" id="other-people"> Loại video cùng người</label>
+      </div>
+    </section>
+
+    <div id="error" class="notice" role="alert" hidden></div>
+    <section class="selected" aria-labelledby="selected-name">
+      <div>
+        <span class="section-label">Truy vấn được chọn</span>
+        <h2 id="selected-name">Đang tải video…</h2>
+        <p id="selected-meta"></p>
+      </div>
+      <span id="position"></span>
+    </section>
+    <div id="announcement" class="sr-only" role="status"></div>
+    <section class="comparison">
+      <article class="query-card" id="query-card" aria-label="Video truy vấn"></article>
+      <section class="results" aria-labelledby="results-title">
+        <div class="results-header">
+          <h2 id="results-title">5 video gần nhất</h2>
+          <span>Điểm cao hơn · gần hơn</span>
+        </div>
+        <div class="result-list" id="results" aria-live="off"></div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
