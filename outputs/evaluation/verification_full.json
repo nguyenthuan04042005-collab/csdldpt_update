@@ -1,0 +1,55 @@
+{
+  "mode": "full",
+  "verified_rows": 599,
+  "shape": [
+    599,
+    324
+  ],
+  "finite": true,
+  "dimensions_by_group": {
+    "A": 16,
+    "B": 120,
+    "C": 24,
+    "D": 84,
+    "E": 48,
+    "F": 32
+  },
+  "row_map_and_exceptions_verified": true,
+  "checks": [
+    "input SHA-256",
+    "column schema",
+    "G observation intervals",
+    "F per-cell availability",
+    "B histogram",
+    "A full-sequence denominator",
+    "E histogram",
+    "D lag length",
+    "C and F bounds"
+  ],
+  "status_by_action": {
+    "boxing": {
+      "complete": 98,
+      "partial": 2
+    },
+    "handclapping": {
+      "complete": 91,
+      "partial": 8
+    },
+    "handwaving": {
+      "complete": 90,
+      "partial": 10
+    },
+    "jogging": {
+      "partial": 100
+    },
+    "running": {
+      "partial": 100
+    },
+    "walking": {
+      "partial": 82,
+      "complete": 18
+    }
+  },
+  "pilot_rows_reproduced": 12,
+  "max_abs_pilot_difference": 0.0
+}
